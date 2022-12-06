@@ -31,7 +31,7 @@ export const FilterPanel = ({ setFirstPage }: FilterPanelProps) => {
 
   useEffect(() => {
     dispatch(filterData(getFilteredData(characters, conditions)));
-  }, [conditions, characters]);
+  }, [conditions, characters, dispatch]);
 
   const setName = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setConditions({ ...conditions, name: e.target.value });
@@ -87,7 +87,7 @@ export const FilterPanel = ({ setFirstPage }: FilterPanelProps) => {
             multiple
           >
             {species.map((option) => (
-              <MenuItem value={option} sx={textStyles}>
+              <MenuItem key={option} value={option} sx={textStyles}>
                 {option}
               </MenuItem>
             ))}
