@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/rickandmorty/static/js/main.fbc6e530.js",
+    "index.html": "/rickandmorty/index.html",
+    "main.fbc6e530.js.map": "/rickandmorty/static/js/main.fbc6e530.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.fbc6e530.js"
+  ]
+}
