@@ -2,7 +2,7 @@ import { Character, Response } from "src/global";
 import { useEffect, useState } from "react";
 import dataService from "src/services/data-service";
 import { useAppDispatch } from "src/store/hooks";
-import { setCharacters } from "src/store/reducers/charactersReducer";
+import { setCharacters } from "src/store/reducers/characterReducer/charactersReducer";
 import { getAllChars } from "./App.helpers";
 import { AlertMessage, Loader } from "src/components";
 

@@ -13,7 +13,7 @@ import { useEffect, useState } from "react";
 import { Avatar, NameCell, Status as StatusElement } from "./components";
 import { useAppSelector } from "src/store/hooks";
 import { PaginationElement } from "../PaginationElement";
-import { Text, EmptyStateComponent, FilterPanel } from "src/components";
+import { Text, EmptyStateComponent, FilterPanel, Loader } from "src/components";
 import { headCells, StyledCheckbox } from "./DataTable.const";
 import { Status, statusses } from "src/global";
 import theme from "src/Theme/Theme";
@@ -25,6 +25,7 @@ export const DataTable = (): JSX.Element => {
     []
   );
   const characters = useAppSelector((store) => store.characters.filteredData);
+  const allCharacters = useAppSelector((store) => store.characters.characters);
 
   useEffect(() => {
     const charactersList = characters
@@ -64,6 +65,10 @@ export const DataTable = (): JSX.Element => {
     status === statusses.dead
       ? "rgba(246, 248, 250, 1)"
       : theme.palette.common.white;
+
+  if (allCharacters.length === 0) {
+    return <Loader />;
+  }
 
   return (
     <Stack rowGap={3}>

@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import characters from "./reducers/charactersReducer";
+import characters from "./reducers/characterReducer/charactersReducer";
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

@@ -12,14 +12,10 @@ import {
 import SearchIcon from "@mui/icons-material/Search";
 import { useAppDispatch, useAppSelector } from "src/store/hooks";
 import { ChangeEvent, useEffect, useState } from "react";
-import { filterData } from "src/store/reducers/charactersReducer";
-import { Conditions } from "./FilterPanel.types";
+import { filterData } from "src/store/reducers/characterReducer/charactersReducer";
+import { Conditions, FilterPanelProps } from "./FilterPanel.types";
 import { initialConditions, textStyles } from "./FilterPanel.const";
 import { getFilteredData } from "./FilterPanel.helpers";
-
-interface FilterPanelProps {
-  setFirstPage: () => void;
-}
 
 export const FilterPanel = ({ setFirstPage }: FilterPanelProps) => {
   const [conditions, setConditions] = useState<Conditions>(initialConditions);
@@ -51,7 +47,7 @@ export const FilterPanel = ({ setFirstPage }: FilterPanelProps) => {
 
   return (
     <Stack direction="row" spacing={6}>
-      <Tooltip title={name}>
+      <Tooltip title={name} placement="right">
         <TextField
           label="Search"
           sx={{
@@ -70,7 +66,7 @@ export const FilterPanel = ({ setFirstPage }: FilterPanelProps) => {
           }}
         />
       </Tooltip>
-      <Tooltip title={speciesList.join(" ,")}>
+      <Tooltip title={speciesList.join(" ,")} placement="right">
         <FormControl
           sx={{
             input: textStyles,

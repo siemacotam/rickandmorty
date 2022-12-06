@@ -1,28 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Character } from "src/global";
-import type { RootState } from "../store";
-
-interface State {
-  characters: Character[];
-  filteredData: Character[];
-  species: string[];
-}
-
-const initialState: State = {
-  characters: [],
-  filteredData: [],
-  species: [],
-};
-
-const getSpecies = (data: Character[]) => {
-  let species: string[] = [];
-  for (const character of data) {
-    if (!species.includes(character.species)) {
-      species.push(character.species);
-    }
-  }
-  return species;
-};
+import type { RootState } from "../../store";
+import { getSpecies, initialState } from "./characterReducer.const";
 
 export const charactersSlice = createSlice({
   name: "characters",

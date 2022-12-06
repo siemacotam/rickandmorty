@@ -58,15 +58,6 @@ let theme = createTheme({
     fontFamily:
       '"Oswald","Roboto", "Helvetica", "Arial", sans-serif !important',
   },
-  components: {
-    MuiCardContent: {
-      styleOverrides: {
-        root: {
-          paddingBottom: "16px !important",
-        },
-      },
-    },
-  },
 });
 theme = responsiveFontSizes(theme);
 
