@@ -1,12 +1,13 @@
 import {
   FormControl,
   InputAdornment,
-  InputLabel,
   MenuItem,
+  Typography,
   Select,
   SelectChangeEvent,
   Stack,
   TextField,
+  OutlinedInput,
   Tooltip,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
@@ -49,7 +50,7 @@ export const FilterPanel = ({ setFirstPage }: FilterPanelProps) => {
     <Stack direction="row" spacing={6}>
       <Tooltip title={name} placement="right">
         <TextField
-          label="Search"
+          placeholder="Search"
           sx={{
             input: textStyles,
             label: textStyles,
@@ -75,13 +76,22 @@ export const FilterPanel = ({ setFirstPage }: FilterPanelProps) => {
             bgcolor: "white",
           }}
         >
-          <InputLabel>Species</InputLabel>
           <Select
             value={speciesList}
-            label="Species"
             onChange={handleChange}
             multiple
+            displayEmpty
+            input={<OutlinedInput sx={textStyles} />}
+            renderValue={(selected) => {
+              if (selected.length === 0) {
+                return <Typography sx={textStyles}>Species</Typography>;
+              }
+              return selected.join(", ");
+            }}
           >
+            <MenuItem disabled value="">
+              <Typography sx={textStyles}>Pick species</Typography>
+            </MenuItem>
             {species.map((option) => (
               <MenuItem key={option} value={option} sx={textStyles}>
                 {option}
