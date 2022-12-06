@@ -1,7 +1,7 @@
 import { Character, Response } from "src/global";
 import dataService from "src/services/data-service";
 
-export const promices = (data: Response) => {
+export const createPromises = (data: Response) => {
   let promices = [];
   for (let i = 1; i < data.info.pages + 1; i++) {
     promices.push(dataService.getCharacter(i));
@@ -15,7 +15,7 @@ export const getAllChars = async (
 ) => {
   let chars: Character[] = [];
 
-  await Promise.all(promices(data)).then((values) => {
+  await Promise.all(createPromises(data)).then((values) => {
     values.forEach((el) => {
       const data: Response = JSON.parse(el);
       chars.push(...data.results);
